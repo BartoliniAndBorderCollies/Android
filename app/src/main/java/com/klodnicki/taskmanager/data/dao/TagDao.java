@@ -19,7 +19,7 @@ public interface TagDao {
     @Query("SELECT * FROM tag_table")
     Flow<List<Tag>> findAll();
 
-    @Query("SELECT * FROM task_table WHERE id = :id")
+    @Query("SELECT * FROM tag_table WHERE id = :id")
     Tag findById(UUID id);
 
     @Insert
