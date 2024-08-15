@@ -56,16 +56,4 @@ public class TaskRepository {
     public Status getStatusById(UUID statusId) {
         return statusDao.findById(statusId);
     }
-
-    public StatusDao getStatusDao() {
-        return statusDao;
-    }
-
-    public TagDao getTagDao() {
-        return tagDao;
-    }
-
-    public TaskDao getTaskDao() {
-        return taskDao;
-    }
 }
