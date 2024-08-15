@@ -33,28 +33,28 @@ public class TaskRepository {
         return allTasks;
     }
 
-    void insert(Task task) {
+    public void insert(Task task) {
         taskDao.create(task);
     }
 
-    void update(Task task) {
+    public void update(Task task) {
         taskDao.update(task);
     }
 
-    void delete(Task task) {
+    public void delete(Task task) {
         taskDao.delete(task);
     }
 
-    Task getTaskById(UUID id) {
+    public Task getTaskById(UUID id) {
         return taskDao.findById(id);
     }
 
-    List<Tag> getTagsForTask(UUID taskId) {
+    public List<Tag> getTagsForTask(UUID taskId) {
         return getTaskById(taskId).getTags();
     }
 
-    Status getStatusById(UUID id) {
-        return statusDao.findById(id);
+    public Status getStatusById(UUID statusId) {
+        return statusDao.findById(statusId);
     }
 
     public StatusDao getStatusDao() {
