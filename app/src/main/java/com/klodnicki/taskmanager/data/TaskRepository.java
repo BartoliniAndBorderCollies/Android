@@ -29,7 +29,7 @@ public class TaskRepository {
         allTasks = taskDao.findAll();
     }
 
-    Flow<List<Task>> getAllTasks() {
+    public Flow<List<Task>> getAllTasks() {
         return allTasks;
     }
 
@@ -50,7 +50,7 @@ public class TaskRepository {
     }
 
     List<Tag> getTagsForTask(UUID taskId) {
-        return tagDao.getTagsForTask(taskId);
+        return getTaskById(taskId).getTags();
     }
 
     Status getStatusById(UUID id) {
