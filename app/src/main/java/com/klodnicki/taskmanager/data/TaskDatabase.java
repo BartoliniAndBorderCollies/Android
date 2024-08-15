@@ -32,4 +32,16 @@ public abstract class TaskDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    public StatusDao getStatusDao() {
+        return statusDao;
+    }
+
+    public TagDao getTagDao() {
+        return tagDao;
+    }
+
+    public TaskDao getTaskDao() {
+        return taskDao;
+    }
 }

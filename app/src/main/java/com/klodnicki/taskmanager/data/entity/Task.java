@@ -29,4 +29,8 @@ public class Task {
     @Ignore
     @Relation(parentColumn = "id", entityColumn = "task_id")
     private List<Tag> tags;
+
+    public List<Tag> getTags() {
+        return tags;
+    }
 }

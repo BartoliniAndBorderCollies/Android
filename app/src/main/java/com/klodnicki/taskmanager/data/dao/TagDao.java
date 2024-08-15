@@ -30,5 +30,4 @@ public interface TagDao {
 
     @Delete
     void delete(Tag tag);
-
 }
