@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">task manager</string>
+    <string name="add">add</string>
+    <string name="insert_task_name">insert task name</string>
+    <string name="tags">tags</string>
+    <string name="save">save</string>
+    <string name="edit">edit</string>
+    <string name="delete">delete</string>
+    <string-array name="status_array">
+        <item>TODO</item>
+        <item>DOING</item>
+        <item>DONE</item>
+    </string-array>
+</resources>
