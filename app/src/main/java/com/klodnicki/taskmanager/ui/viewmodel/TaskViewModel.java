@@ -20,10 +20,9 @@ import kotlinx.coroutines.flow.Flow;
 public class TaskViewModel extends AndroidViewModel {
     private TaskRepository taskRepository;
     private Flow<List<Task>> allTasks;
+    private List<Status> allStatuses;
+    private List<Tag> allTags;
 
-    public Flow<List<Task>> getAllTasks() {
-        return allTasks;
-    }
 
     public TaskViewModel(@NonNull Application application) {
         super(application);
@@ -108,6 +107,22 @@ public class TaskViewModel extends AndroidViewModel {
             taskRepository.insert(tasks[0]);
             return null;
         }
+    }
+
+    public Flow<List<Task>> getAllTasks() {
+        return allTasks;
+    }
+
+    public List<Status> getAllStatuses() {
+        return allStatuses;
+    }
+
+    public List<Tag> getAllTags() {
+        return allTags;
+    }
+
+    public TaskRepository getTaskRepository() {
+        return taskRepository;
     }
 
     // UI zaimplementować UI (lista zadań + formularz Add/Update)
