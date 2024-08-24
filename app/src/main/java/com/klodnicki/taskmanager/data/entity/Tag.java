@@ -13,4 +13,8 @@ public class Tag {
     @NonNull
     private UUID id;
     private String name;
+
+    public String getName() {
+        return name;
+    }
 }

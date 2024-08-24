@@ -33,4 +33,30 @@ public class Task {
     public List<Tag> getTags() {
         return tags;
     }
+
+    @NonNull
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @NonNull
+    public UUID getStatusId() {
+        return statusId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStatusId(@NonNull UUID statusId) {
+        this.statusId = statusId;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 }
