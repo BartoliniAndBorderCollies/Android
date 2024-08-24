@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
             // dodać do intent parametr 'extra' ktory bedzie przechowywal id zaznaczonego obiektu
+            // Passing the UUID as a Serializable
             intent.putExtra("idTask", task.getId().toString());
 
             // wystartowac activity
