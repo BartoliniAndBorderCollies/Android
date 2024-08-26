@@ -1,6 +1,7 @@
 package com.klodnicki.taskmanager;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -79,15 +80,49 @@ public class FormActivity extends AppCompatActivity {
                 selectedTags.addAll(task.getTags());
                 for (int i = 0; i < tagListView.getCount(); i++) {//tutaj wybieram zaznaczone tagi
                     Tag tag = (Tag) tagListView.getItemAtPosition(i);//ustalasz ich pozycje
-                    if(selectedTags.contains(tag))
+                    if (selectedTags.contains(tag))
                         tagListView.setItemChecked(i, true);
                 }
             }
         }
 
+        //opcja kiedy Task nie istnieje (wtedy de facto tworzymy nowego)
+        // -- wypełnienie spinnera statusami
+        // pobranie statusów z taskViewModel'u
+        // utworzenie adapter'a ArrayAdapter<Status> statusAdapter
+        // ustawienie w adapterz'e źródła danych poprzez setDropDownViewResource
+        // podpięcie adapter'a pod statusSpinner
 
+        List<Status> allStatuses = taskViewModel.getAllStatuses();
+        //this oznacza tą klasę, czyli FormActivity.java, następnie pobieramy resource w postaci
+        // simple_spinner_item następuje przekazanie listy backandowej z frontedowym obiektem
+        //TODO: sprawdzić czy simple_spinner_item czy single
+        ArrayAdapter<Status> statusArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, allStatuses);
+        // ustawienie w adapterz'e źródła danych poprzez setDropDownViewResource
+        statusArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // podpięcie adapter'a pod statusSpinner
+        statusSpinner.setAdapter(statusArrayAdapter);
 
-    }
+        // -- wypełnienie ListView tagListView
+        // pobranie tagów z taskViewModel'u
+        List<Tag> allTags = taskViewModel.getAllTags();
+        // utworzenie adapter'a ArrayAdapter<Tag> tagAdapter
+        ArrayAdapter<Tag> tagAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, allTags);
+        // podpięcie adapter'a pod tagListView
+        tagListView.setAdapter(tagAdapter);
+        // podpięcie akcji setOnItemClickListener pod tagListView celem dodania/usunięcia z selectedTags zaznaczonego Tag'a (getItemAtPosition)
+        // to wykonuje sie dla pojedynczego klikniecia!
+        tagListView.setOnItemClickListener((viewAdapter, view, position, id) -> {
+            //viewAdapter ->
+            //view ->
+            //position ->
+            //id ->
+            Tag selectedTag = (Tag) viewAdapter.getItemAtPosition(position);
+            if (selectedTags.contains(selectedTag))
+                selectedTags.remove(selectedTag);
+            else
+                selectedTags.add(selectedTag);
+        });
 
 
 }
