@@ -124,5 +124,14 @@ public class FormActivity extends AppCompatActivity {
                 selectedTags.add(selectedTag);
         });
 
-
+        saveButton.setOnClickListener(v -> {
+            String name = nameEditText.getText().toString();
+            Status status = (Status) statusSpinner.getSelectedItem();
+            //spring pozwala na dokonanie zapisu poprzez save - jest to jedna metoda
+            //tworzymy nowy obiekt bo chcemy nie dopuscic do detached entity
+            taskViewModel.getTaskRepository().saveOrUpdate(new Task(
+                    taskUUID != null ? taskUUID : UUID.randomUUID(), name, status.getId(), selectedTags));
+            finish();
+        });
+    }
 }
