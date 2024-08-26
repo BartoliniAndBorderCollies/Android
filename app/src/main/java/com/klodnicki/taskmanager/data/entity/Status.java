@@ -13,4 +13,9 @@ public class Status {
     private UUID id;
 
     private String name;
+
+    @NonNull
+    public UUID getId() {
+        return id;
+    }
 }
