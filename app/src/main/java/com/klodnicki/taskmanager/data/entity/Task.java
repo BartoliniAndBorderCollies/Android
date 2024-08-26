@@ -19,6 +19,13 @@ import java.util.UUID;
             onDelete = ForeignKey.CASCADE),
         indices = {@Index(value = {"status_id"})})
 public class Task {
+
+    public Task(@NonNull UUID id, String name, @NonNull UUID statusId, List<Tag> tags) {
+        this.id = id;
+        this.name = name;
+        this.statusId = statusId;
+        this.tags = tags;
+    }
     @PrimaryKey
     @NonNull
     private UUID id;
