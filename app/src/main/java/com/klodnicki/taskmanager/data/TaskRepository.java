@@ -37,8 +37,11 @@ public class TaskRepository {
         taskDao.create(task);
     }
 
-    public void update(Task task) {
-        taskDao.update(task);
+    public void saveOrUpdate(Task task) {
+        if (task.getId() != null)
+            taskDao.update(task);
+        else
+            insert(task);
     }
 
     public void delete(Task task) {

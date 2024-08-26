@@ -74,7 +74,7 @@ public class TaskViewModel extends AndroidViewModel {
 
         @Override
         protected Void doInBackground(final Task... tasks) {
-            taskRepository.update(tasks[0]);
+            taskRepository.saveOrUpdate(tasks[0]);
             return null;
         }
     }
